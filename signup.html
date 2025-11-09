@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | Sheeqs Homefinder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #50c9c3, #4a90e2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .signup-container {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #357ABD;
+    }
+    .link {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+    a {
+      color: #4a90e2;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h2>Create Account</h2>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button onclick="signup()">Sign Up</button>
+    <div class="link">
+      <p>Already have an account? <a href="index.html">Login here</a></p>
+    </div>
+  </div>
+
+  <script>
+    function signup() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      if (email && password) {
+        localStorage.setItem('email', email);
+        localStorage.setItem('password', password);
+        alert('Account created successfully!');
+        window.location.href = 'index.html';
+      } else {
+        alert('Please fill in all fields!');
+      }
+    }
+  </script>
+</body>
+</html>

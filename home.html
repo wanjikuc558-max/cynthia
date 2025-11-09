@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homepage</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background-color: #f5f6fa;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #145da0;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    nav .logo i {
+      font-size: 24px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* SLIDES SECTION */
+    .slideshow-container {
+      position: relative;
+      max-width: 100%;
+      height: 400px;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      width: 100%;
+      height: 400px;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .active-slide {
+      display: block;
+    }
+
+    .search-bar {
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    .search-bar input {
+      width: 50%;
+      padding: 10px;
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 90%;
+      margin: 30px auto;
+      padding-bottom: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    footer {
+      background-color: #145da0;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">
+      <i>🏠</i>
+      <h2>RentalHub</h2>
+    </div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Help</a></li>
+    </ul>
+  </nav>
+
+  <!-- ✅ Slides Section -->
+  <div class="slideshow-container">
+    <div class="slide active-slide">
+      <img src="slide1.jpg" alt="Luxury Apartment">
+    </div>
+    <div class="slide">
+      <img src="slide2.jpg" alt="Beach House">
+    </div>
+    <div class="slide">
+      <img src="slide3.jpg" alt="Townhouse">
+    </div>
+  </div>
+
+  <!-- ✅ Search Bar -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search for properties...">
+  </div>
+
+  <!-- ✅ Properties -->
+  <div class="cards-container" id="propertyCards"></div>
+
+  <!-- ✅ Footer -->
+  <footer>
+    <p>&copy; 2025 RentalHub. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ✅ Protect homepage from direct access without login
+    const userEmail = localStorage.getItem("userEmail");
+    const userPassword = localStorage.getItem("userPassword");
+    if (!userEmail || !userPassword) {
+      alert("You must log in first!");
+      window.location.href = "login.html";
+    }
+
+    // ✅ Slides auto-play
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slide");
+    function showSlides() {
+      slides.forEach((slide, i) => slide.classList.remove("active-slide"));
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].classList.add("active-slide");
+    }
+    setInterval(showSlides, 3000); // changes every 3 seconds
+
+    // ✅ Property data
+    const properties = [
+      { id: 1, name: "Luxury Apartment", price: "KSh 80,000/month", location: "Nairobi", image: "img1.jpg", desc: "Spacious apartment with modern design." },
+      { id: 2, name: "Beach House", price: "KSh 120,000/month", location: "Mombasa", image: "img2.jpg", desc: "Ocean view villa with swimming pool." },
+      { id: 3, name: "Townhouse", price: "KSh 60,000/month", location: "Nakuru", image: "img3.jpg", desc: "Perfect family home in a quiet area." },
+      { id: 4, name: "Studio Apartment", price: "KSh 30,000/month", location: "Kisumu", image: "img4.jpg", desc: "Affordable studio for students or singles." },
+      { id: 5, name: "Farmhouse", price: "KSh 100,000/month", location: "Naivasha", image: "img5.jpg", desc: "Country-style home with green surroundings." },
+      { id: 6, name: "Modern Bedsitter", price: "KSh 20,000/month", location: "Thika", image: "img6.jpg", desc: "Compact bedsitter close to town." },
+    ];
+
+    // ✅ Display property cards
+    const container = document.getElementById("propertyCards");
+    properties.forEach((p) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${p.image}" alt="${p.name}">
+        <div class="card-content">
+          <h3>${p.name}</h3>
+          <p>${p.location}</p>
+          <p><strong>${p.price}</strong></p>
+        </div>
+      `;
+      card.onclick = () => {
+        localStorage.setItem("selectedProperty", JSON.stringify(p));
+        window.location.href = "property-detail.html";
+      };
+      container.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>

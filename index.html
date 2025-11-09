@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SheeqsHomefinder | Home</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f6f8;
+    }
+
+    /* NAVBAR */
+    nav {
+      background-color: #4a90e2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-left img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .nav-left h2 {
+      color: white;
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .nav-right a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: bold;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .nav-right a:hover {
+      color: #cde3ff;
+    }
+
+    /* SEARCH BAR */
+    .search-container {
+      margin: 30px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .search-container input {
+      width: 50%;
+      padding: 12px 20px;
+      border: 2px solid #4a90e2;
+      border-radius: 50px;
+      outline: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .search-container input:focus {
+      border-color: #2c6ec5;
+      box-shadow: 0 0 5px #4a90e2;
+    }
+
+    /* CARD GRID */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 80%;
+      margin: 40px auto 100px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      padding: 15px;
+      margin: 0;
+    }
+
+    footer {
+      background: #4a90e2;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .search-container input {
+        width: 70%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .search-container input {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-left">
+      <img src="https://img.icons8.com/ios-filled/50/ffffff/home.png" alt="Home Icon">
+      <h2>RentalHub</h2>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="help.html">Help</a>
+    </div>
+  </nav>
+
+  <!-- SEARCH BAR -->
+  <div class="search-container">
+    <input type="text" placeholder="Search houses, apartments, or rentals..." />
+  </div>
+
+  <!-- 6 CARDS -->
+  <div class="grid">
+    <a href="card1.html" class="card">
+      <img src="image/Apartment  1.jpg" alt="">
+      <h3>Lavish Loft</h3>
+      <h4>6500ksh/month</h4>
+    </a>
+    <a href="card2.html" class="card">
+      <img src="image/apartment 2.jpg" alt="">
+      <h3>luxe Apartments</h3>
+      <h4>9500ksh/month</h4>
+    </a>
+    <a href="card3.html" class="card">
+      <img src="image/apartment 3.jpg" alt="">
+      <h3>Concrete Hostels</h3>
+      <h4>9000ksh/month</h4>
+    </a>
+    <a href="card4.html" class="card">
+      <img src="image/apartment 4.jpg" alt="">
+      <h3>Azure Grove</h3>
+      <h4>8000ksh/month</h4>
+    </a>
+    <a href="card5.html" class="card">
+      <img src="image/apartment 5.webp" alt="">
+      <h3>Coastal Haven</h3>
+      <h4>7500ksh/month</h4>
+    </a>
+    <a href="card6.html" class="card">
+      <img src="image/apartment   6.jpg" alt="">
+      <h3>Jerusalem Apartments</h3>
+      <h4>7000ksh/month</h4>
+    </a>
+  </div>
+
+  <footer>© 2025 Sheeqs Homefinder</footer>
+</body>
+</html>
